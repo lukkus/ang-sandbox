@@ -1,0 +1,28 @@
+<h3>Template form</h3>
+<form (ngSubmit)="onSubmitTemplateForm()">
+  <div class="col-2">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             required
+             [(ngModel)]="model.name" name="name">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+  </div>
+</form>
+
+
+<div class="splitter"></div>
+
+<h3>Reactive form</h3>
+<form [formGroup]="form" (ngSubmit)="onSubmitReactiveForm()">
+  <div class="col-2">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" formControlName="name">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+  </div>
+</form>

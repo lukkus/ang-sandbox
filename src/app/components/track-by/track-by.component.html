@@ -1,0 +1,39 @@
+<p>track-by works!</p>
+<br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h4>List <b>without</b> trackBy</h4>
+      <button class="btn btn-success" (click)="refreshNotTracked()">Refresh</button>
+        <br><br>
+      <div *ngFor="let item of notTrackedIds;">
+        <app-tracked-item [id]="item.id"></app-tracked-item>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <h4>List <b>with</b> trackBy</h4>
+      <button class="btn btn-success" (click)="refreshTracked()">Refresh</button>
+        <br><br>
+      <div *ngFor="let item of trackedIds;trackBy: trackByFn">
+        <app-tracked-item [id]="item.id"></app-tracked-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="row info">
+    <h5>INFO:</h5>
+    <p>Why do we need to use ngFor trackBy in the angular application?</p>
+    <ul>
+      <li>The trackBy used to improve the performance of the angular project.</li>
+      <li>It is usually not needed only when your application running into performance issues.</li>
+      <li>The angular ngFor directive may perform poorly with large applications.</li>
+      <li>A little change to the collection is adding a new item or removing an existing item from the collection may trigger a cascade of DOM manipulations.</li>
+      <li>Assume, we have some data coming from some back-end API and we are storing data into some type of collection like an array and then we need to update these data over the webpage using ngFor directive.</li>
+      <li>By default, what the angular framework will do is, it will remove all the DOM elements that are associated with the data and will create them again in the DOM tree even if the equal data is coming.</li>
+      <li>A lot of DOM Manipulation will occur in the background if a large amount of data coming from the back-end API repeatedly.</li>
+    </ul>
+    <a href="https://www.red-gate.com/simple-talk/blogs/explain-ngfor-trackby-in-angular/">Source</a>
+  </div>
+</div>
