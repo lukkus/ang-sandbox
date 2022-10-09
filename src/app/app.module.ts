@@ -20,6 +20,8 @@ import { RightFirstComponent } from './components/change-detection/right-contain
 import { RightSecondComponent } from './components/change-detection/right-container/right-second/right-second.component';
 import { LeftSecondComponent } from './components/change-detection/left-container/left-second/left-second.component';
 import { LeftFirstComponent } from './components/change-detection/left-container/left-first/left-first.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,13 @@ import { LeftFirstComponent } from './components/change-detection/left-container
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
