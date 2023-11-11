@@ -9,6 +9,8 @@ import { ReactiveProgrammingComponent } from './components/reactive-programming/
 import { RwdComponent } from './components/rwd/rwd.component';
 import { TestingComponent } from './components/testing/testing.component';
 import { TrackByComponent } from './components/track-by/track-by.component';
+import { LifecyclesComponent } from './components/lifecycles/lifecycles.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 const routes: Routes = [
   { path: 'forms', component: FormsComponent },
@@ -16,10 +18,13 @@ const routes: Routes = [
   { path: 'change-detection', component: ChangeDetectionComponent },
   { path: 'reactive', component: ReactiveProgrammingComponent },
   { path: 'rwd', component: RwdComponent },
+  { path: 'lifecycles', component: LifecyclesComponent },
   { path: 'pwa', component: PwaComponent },
-  { path: 'others', component: OthersComponent },
+  { path: 'others', component: OthersComponent, outlet: 'sidebar' },
+  { path: 'subjects', component: SubjectsComponent },
   { path: 'tests', component: TestingComponent },
   { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent }
 ];
 

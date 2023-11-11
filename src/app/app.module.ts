@@ -22,6 +22,9 @@ import { LeftSecondComponent } from './components/change-detection/left-containe
 import { LeftFirstComponent } from './components/change-detection/left-container/left-first/left-first.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ChildComponentComponent } from './components/reactive-programming/child-component/child-component.component';
+import { LifecyclesComponent } from './components/lifecycles/lifecycles.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { environment } from '../environments/environment';
     RightFirstComponent,
     RightSecondComponent,
     LeftSecondComponent,
-    LeftFirstComponent
+    LeftFirstComponent,
+    ChildComponentComponent,
+    LifecyclesComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,

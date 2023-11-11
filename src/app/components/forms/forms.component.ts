@@ -15,9 +15,11 @@ export class FormsComponent implements OnInit {
     objectId: 0
   };
 
-  public form = this.fb.group({
+  public formReactive = this.fb.group({
     "name": [""],
   });
+
+  public test: string = "";
 
   constructor(private fb: FormBuilder) { }
 
@@ -29,6 +31,14 @@ export class FormsComponent implements OnInit {
   }
 
   public onSubmitReactiveForm(): void {
-    console.log("reactive form submitted: ", this.form);
+    console.log("reactive form submitted: ", this.formReactive);
+  }
+
+  getValue(): void {
+    console.warn("test: ", this.test);
+  }
+
+  submitForm(formValue: any) {
+    console.log('Form Value', formValue);
   }
 }

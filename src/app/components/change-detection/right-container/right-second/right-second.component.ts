@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { getRandomColor } from 'src/app/helpers/color.helper';
 
 @Component({
@@ -7,17 +7,40 @@ import { getRandomColor } from 'src/app/helpers/color.helper';
   templateUrl: './right-second.component.html',
   styleUrls: ['./right-second.component.scss']
 })
-export class RightSecondComponent implements OnChanges, DoCheck {
+export class RightSecondComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy{
 
   constructor() { }
 
-  style: { 'background-color': any; };
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Right component 2 changes');
+    console.log("Grand Child BB  ngOnChanges: ", changes);
   }
+
+  ngOnInit(): void {
+    console.log("Grand Child BB  ngOnInit");
+  }
+
   ngDoCheck(): void {
-    this.style = { 'background-color': getRandomColor() };
-    console.log('Right component 2 do check');
+    console.log("Grand Child BB  ngDoCheck");
+  }
+
+  ngAfterContentInit(): void {
+    console.log("Grand Child BB  ngAfterContentInit");
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("Grand Child BB  ngAfterContentChecked");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Grand Child BB  ngAfterViewInit");
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("Grand Child BB  ngAfterViewChecked");
+  }
+
+  ngOnDestroy(): void {
+    console.log("Grand Child BB  ngOnDestroy");
   }
 
 }

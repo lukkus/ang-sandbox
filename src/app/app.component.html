@@ -10,6 +10,8 @@
   <a routerLink="/track-by">Track by</a>
   <a routerLink="/change-detection">Change Detection</a>
   <a routerLink="/reactive">Reactive programming</a>
+  <a routerLink="/lifecycles">Lifecycles</a>
+  <a routerLink="/subjects">Subjects</a>
   <a routerLink="/rwd">RWD</a>
   <a routerLink="/pwa">PWA</a>
   <a routerLink="/tests">Tests</a>
@@ -17,7 +19,11 @@
 </div>
 
 <div class="content" role="main">
+  <!-- <button (click)="openSidebar()">xD</button> -->
   <router-outlet></router-outlet>
 </div>
 
 
+<div class="lol">
+  <router-outlet name="sidebar"></router-outlet>
+</div>
