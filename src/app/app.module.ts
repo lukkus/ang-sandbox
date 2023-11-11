@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { ChildComponentComponent } from './components/reactive-programming/child-component/child-component.component';
 import { LifecyclesComponent } from './components/lifecycles/lifecycles.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SignalsComponent } from './components/signals/signals.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
     LeftFirstComponent,
     ChildComponentComponent,
     LifecyclesComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    SignalsComponent
   ],
   imports: [
     BrowserModule,
