@@ -1,1 +1,12 @@
-<p>rwd works!</p>
+<ng-select
+  [items]="filteredData$ | async"
+  bindLabel="name"
+  bindValue="id"
+  [multiple]="true"
+  [typeahead]="searchTerm$"
+  [clearable]="true"
+  [virtualScroll]="true"
+  [ngModel]="selectedItems"
+  (ngModelChange)="onModelChange($event)"
+>
+</ng-select>

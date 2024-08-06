@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { getRandomColor } from 'src/app/helpers/color.helper';
+import { getRandomColor } from 'app/helpers/color.helper';
 
 @Component({
   selector: 'app-left-container',

@@ -1,6 +1,6 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { getRandomColor } from 'src/app/helpers/color.helper';
-import { DataService } from 'src/app/services/data.service';
+import { getRandomColor } from 'app/helpers/color.helper';
+import { DataService } from 'app/services/data.service';
 
 @Component({
   selector: 'app-left-first',

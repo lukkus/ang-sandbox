@@ -11,6 +11,9 @@ import { TestingComponent } from './components/testing/testing.component';
 import { TrackByComponent } from './components/track-by/track-by.component';
 import { LifecyclesComponent } from './components/lifecycles/lifecycles.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SignalsComponent } from './components/signals/signals.component';
+import { WebSocketsComponent } from './components/web-sockets/web-sockets.component';
+import { SignalrComponent } from './components/signalr/signalr.component';
 
 const routes: Routes = [
   { path: 'forms', component: FormsComponent },
@@ -23,6 +26,9 @@ const routes: Routes = [
   { path: 'others', component: OthersComponent, outlet: 'sidebar' },
   { path: 'subjects', component: SubjectsComponent },
   { path: 'tests', component: TestingComponent },
+  { path: 'web-sockets', component: WebSocketsComponent },
+  { path: 'signalr', component: SignalrComponent },
+  { path: 'signals', component: SignalsComponent },
   { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent }

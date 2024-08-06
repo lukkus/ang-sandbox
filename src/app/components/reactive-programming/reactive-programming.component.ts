@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DataService } from 'app/services/data.service';
 import { combineLatest, EMPTY, forkJoin, mergeMap, of, Subscription, switchMap } from 'rxjs';
-import { Person } from 'src/app/models/person.model';
-import { DataService } from 'src/app/services/data.service';
+import { Person } from 'app/models/person.model';
 
 @Component({
   selector: 'app-reactive-programming',
