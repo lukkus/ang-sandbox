@@ -1,46 +1,11 @@
-<p>reactive-programming works!</p>
+<!-- <app-child-component name="Lukasz" surname="Kus">
+</app-child-component> -->
 
-<button (click)="addUser()">Add user</button>
+<!-- <div *ngFor="let person of people">
+  <p> {{ person.firstName }} {{ person.lastName }} </p>
+</div> -->
 
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <table>
-        <th>
-          First name
-        </th>
-        <th>
-          Last name
-        </th>
-        <tr *ngFor="let user of users">
-          <td>
-            {{user.firstName}}
-          </td>
-          <td>
-            {{user.lastName}}
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-6">
-      <table>
-        <th>
-          First name
-        </th>
-        <th>
-          Last name
-        </th>
-        <tr *ngFor="let user of users$ | async">
-          <td>
-            {{user.firstName}}
-          </td>
-          <td>
-            {{user.lastName}}
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
+<div *ngFor="let person of peopleAsync | async">
+  <p> {{ person.firstName }} {{ person.lastName }} </p>
 </div>

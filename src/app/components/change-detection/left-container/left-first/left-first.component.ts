@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, DoCheck, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { getRandomColor } from 'src/app/helpers/color.helper';
-import { DataService } from 'src/app/services/data.service';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { getRandomColor } from 'app/helpers/color.helper';
+import { DataService } from 'app/services/data.service';
 
 @Component({
   selector: 'app-left-first',
@@ -8,22 +8,37 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './left-first.component.html',
   styleUrls: ['./left-first.component.scss']
 })
-export class LeftFirstComponent implements OnChanges, DoCheck, OnInit {
+export class LeftFirstComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  constructor(private dataService: DataService) {}
-  ngOnInit(): void {}
-  @Output() dataEntered = new EventEmitter();
-  name: any;
-  style: { 'background-color': any };
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Left component 1 changes');
+    console.log("Grand Child AA  ngOnChanges: ", changes);
   }
+
+  ngOnInit(): void {
+    console.log("Grand Child AA  ngOnInit");
+  }
+
   ngDoCheck(): void {
-    this.style = { 'background-color': getRandomColor() };
-    console.log('Left component 1 do check');
+    console.log("Grand Child AA  ngDoCheck");
   }
-  emitNewValue() {
-    // this.dataEntered.emit(this.name);
-    this.dataService.sendData(this.name);
+
+  ngAfterContentInit(): void {
+    console.log("Grand Child AA  ngAfterContentInit");
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("Grand Child AA  ngAfterContentChecked");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Grand Child AA  ngAfterViewInit");
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("Grand Child AA  ngAfterViewChecked");
+  }
+
+  ngOnDestroy(): void {
+    console.log("Grand Child AA  ngOnDestroy");
   }
 }

@@ -1,0 +1,19 @@
+<ul>
+  <ng-container *ngFor="let item of elements">
+    <ng-container *ngIf="!item.group">
+      <li>{{ item.Name }}</li>
+    </ng-container>
+    <ng-container *ngIf="item.group">
+      <li>
+        {{ item.group }}
+        <ul>
+          <li *ngFor="let groupItem of elements">
+            <ng-container *ngIf="groupItem.group === item.group">
+              {{ groupItem.Name }}
+            </ng-container>
+          </li>
+        </ul>
+      </li>
+    </ng-container>
+  </ng-container>
+</ul>

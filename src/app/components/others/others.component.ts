@@ -23,6 +23,6 @@ export class OthersComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    alert("Others init");
   }
 }

@@ -22,7 +22,17 @@ import { LeftSecondComponent } from './components/change-detection/left-containe
 import { LeftFirstComponent } from './components/change-detection/left-container/left-first/left-first.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { ChildComponentComponent } from './components/reactive-programming/child-component/child-component.component';
+import { LifecyclesComponent } from './components/lifecycles/lifecycles.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SignalsComponent } from './components/signals/signals.component';
+import { ElementListComponent } from './components/reactive-programming/element-list/element-list.component';
+import { ElementListItemComponent } from './components/rwd/element-list-item/element-list-item.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { WebSocketsComponent } from './components/web-sockets/web-sockets.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignalrComponent } from './components/signalr/signalr.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,13 +51,24 @@ import { environment } from '../environments/environment';
     RightFirstComponent,
     RightSecondComponent,
     LeftSecondComponent,
-    LeftFirstComponent
+    LeftFirstComponent,
+    ChildComponentComponent,
+    LifecyclesComponent,
+    SubjectsComponent,
+    SignalsComponent,
+    ElementListComponent,
+    ElementListItemComponent,
+    WebSocketsComponent,
+    SignalrComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
+    ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

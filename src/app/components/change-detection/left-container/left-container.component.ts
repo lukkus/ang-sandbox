@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { getRandomColor } from 'src/app/helpers/color.helper';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { getRandomColor } from 'app/helpers/color.helper';
 
 @Component({
   selector: 'app-left-container',
@@ -7,20 +7,37 @@ import { getRandomColor } from 'src/app/helpers/color.helper';
   templateUrl: './left-container.component.html',
   styleUrls: ['./left-container.component.scss']
 })
-export class LeftContainerComponent implements OnChanges, DoCheck  {
+export class LeftContainerComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
-  data: any = [];
-  style: { 'background-color': any };
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Left container changes');
-  }
-  ngDoCheck(): void {
-    this.style = { 'background-color': getRandomColor() };
-    console.log('Left container do check');
+    console.log("Child A  ngOnChanges: ", changes);
   }
 
-  passData(val: any) {
-    // this.data.push(val);
-    this.data = [...this.data, val];
+  ngOnInit(): void {
+    console.log("Child A  ngOnInit");
+  }
+
+  ngDoCheck(): void {
+    console.log("Child A  ngDoCheck");
+  }
+
+  ngAfterContentInit(): void {
+    console.log("Child A  ngAfterContentInit");
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("Child A  ngAfterContentChecked");
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Child A  ngAfterViewInit");
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("Child A  ngAfterViewChecked");
+  }
+
+  ngOnDestroy(): void {
+    console.log("Child A  ngOnDestroy");
   }
 }

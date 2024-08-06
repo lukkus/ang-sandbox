@@ -1,28 +1,20 @@
-<h3>Template form</h3>
-<form (ngSubmit)="onSubmitTemplateForm()">
-  <div class="col-2">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name"
-             required
-             [(ngModel)]="model.name" name="name">
+<div class="container-fluid">
+  <h1> Angular Form Array Example</h1>
+  <form class="form" [formGroup]="form">
+    <div class="container">
+      <div formArrayName="skills">
+        <div *ngFor="let skill of skills.controls;let i=index" >
+          <div [formGroupName]="i">
+            <input type="checkbox" formControlName="checked" [indeterminate]="skill.get('intermediate')?.value" (change)="onChange($event.currentTarget, skill.value)" /> {{skill.get('name')?.value}}
+          </div>
+        </div>
+      </div>
     </div>
-
-    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+  </form>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+    {{this.form.getRawValue() | json}}
   </div>
-</form>
-
-
-<div class="splitter"></div>
-
-<h3>Reactive form</h3>
-<form [formGroup]="form" (ngSubmit)="onSubmitReactiveForm()">
-  <div class="col-2">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input class="form-control" type="text" formControlName="name">
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-submit">Submit</button>
-  </div>
-</form>
+</div>
