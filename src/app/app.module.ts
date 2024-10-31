@@ -33,6 +33,10 @@ import { WebSocketsComponent } from './components/web-sockets/web-sockets.compon
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignalrComponent } from './components/signalr/signalr.component';
+import { CookieService } from 'ngx-cookie-service';
+import { CognitoLoginComponent } from './components/cognito-login/cognito-login.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +63,8 @@ import { SignalrComponent } from './components/signalr/signalr.component';
     ElementListComponent,
     ElementListItemComponent,
     WebSocketsComponent,
-    SignalrComponent
+    SignalrComponent,
+    CognitoLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { SignalrComponent } from './components/signalr/signalr.component';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -76,7 +82,7 @@ import { SignalrComponent } from './components/signalr/signalr.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

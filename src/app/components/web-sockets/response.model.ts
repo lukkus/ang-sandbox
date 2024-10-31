@@ -1,4 +1,4 @@
 export interface ResponseModel {
-  statusCode: number;
-  message: string
+  action?: string;
+  message?: string
 }

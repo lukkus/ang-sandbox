@@ -14,6 +14,7 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
 import { SignalsComponent } from './components/signals/signals.component';
 import { WebSocketsComponent } from './components/web-sockets/web-sockets.component';
 import { SignalrComponent } from './components/signalr/signalr.component';
+import { CognitoLoginComponent } from './components/cognito-login/cognito-login.component';
 
 const routes: Routes = [
   { path: 'forms', component: FormsComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'signalr', component: SignalrComponent },
   { path: 'signals', component: SignalsComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'cognito', component: CognitoLoginComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent }
 ];

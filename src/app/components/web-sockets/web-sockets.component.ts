@@ -7,6 +7,11 @@ import { WebSocketService } from './web-sockets.service';
   styleUrls: ['./web-sockets.component.scss']
 })
 export class WebSocketsComponent {
+  message: string;
+  action: string;
+  subscribeUserCreated = false;
+  subscribeUserUpdated = false;
+
   constructor(
     private webSocketService: WebSocketService,
   ) {}
@@ -25,17 +30,24 @@ export class WebSocketsComponent {
   }
 
   getTest(): void {
-    this.webSocketService.sendMessage({ action: 'test' });
+    this.webSocketService.sendMessage(
+      {
+        action: 'test',
+        event: 'xd',
+        body: {
+          data: 'dupa'
+        }
+      });
   }
 
   sendMessage(): void {
-    const message = {
-      action: 'sendMessage',
-      data: {
-        parameter1: 'hi from parameter1'
+    this.webSocketService.sendMessage(
+      {
+        action: this.action,
+        data:  {
+          room: 'guwno'
       }
-    };
-    this.webSocketService.sendMessage(message);
+      });
   }
 
   sendEmailMessage(): void {
@@ -47,11 +59,44 @@ export class WebSocketsComponent {
     this.webSocketService.sendMessage(message);
   }
 
+  subscribeToAddUser(): void {
+    const message = { event: 'userCreated' };
+    this.webSocketService.sendMessage(message);
+  }
+
+  unsubscribeEvent(event: string): void {
+    const message = { action: 'unsubscribe', event: event };
+    this.webSocketService.sendMessage(message);
+  }
+
+  subscribeEvent(event: string): void {
+    const message = { action: 'subscribe', event: event };
+    this.webSocketService.sendMessage(message);
+  }
+
   sendLambda(): void {
     const message = {
       action: 'lambda',
       body: 'lukasz'
     };
     this.webSocketService.sendMessage(message);
+  }
+
+  onUserCreatedSubscribeChange(): void {
+    const event = 'userCreated';
+    if (this.subscribeUserCreated) {
+      this.subscribeEvent(event);
+    } else {
+      this.unsubscribeEvent(event);
+    }
+  }
+
+  onUserUpdatedSubscribeChange(): void {
+    const event = 'userUpdated';
+    if (this.subscribeUserUpdated) {
+      this.subscribeEvent(event);
+    } else {
+      this.unsubscribeEvent(event);
+    }
   }
 }

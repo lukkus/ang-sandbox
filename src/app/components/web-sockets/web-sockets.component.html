@@ -1,7 +1,19 @@
 <p>web-sockets works!</p>
+Subscribe UserCreated event
+<input type="checkbox" [(ngModel)]="subscribeUserCreated" (change)="onUserCreatedSubscribeChange()" /><br>
+
+Subscribe UserUpdated event
+<input type="checkbox" [(ngModel)]="subscribeUserUpdated" (change)="onUserUpdatedSubscribeChange()" />
+<br><br>
+Action<br>
+<input type="text" [(ngModel)]="action"><br>
+Message<br>
+<input type="text" [(ngModel)]="message"><br>
+<button (click)="sendMessage()">Send</button><br><br>
+
 <button (click)="getMock()">Get Mock</button><br>
 <button (click)="getApi()">Get Api</button><br>
 <button (click)="getTest()">Get Test</button><br>
-<button (click)="sendMessage()">SendMessage</button><br>
+<button (click)="subscribeToAddUser()">Subscribe User Created</button><br>
 <button (click)="sendEmailMessage()">Send another Message</button><br>
 <button (click)="sendLambda()">Send Lambda</button><br>

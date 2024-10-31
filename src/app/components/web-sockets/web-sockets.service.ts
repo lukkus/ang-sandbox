@@ -8,27 +8,32 @@ import { WebSocketSubject } from 'rxjs/webSocket';
 })
 export class WebSocketService {
   private socket: WebSocket;
-  private socket$: WebSocketSubject<any>;
+  private joinroomSocket: WebSocket;
 
-  private url1 = "wss://cce3dwpznl.execute-api.eu-west-1.amazonaws.com/development/";
-  private url2 = 'wss://amjtc1ttrg.execute-api.eu-west-1.amazonaws.com/production/';
+  private url = "wss://cce3dwpznl.execute-api.eu-west-1.amazonaws.com/development";
+  private joinroomUrl = "wss://cce3dwpznl.execute-api.eu-west-1.amazonaws.com/development/joinroom";
 
   constructor(private toastr: ToastrService) {
-    const userId = this.generateGuid();
-    console.log("userId: ", userId);
-
-    const browser = this.getBrowserName();
-    console.log("browser ", browser);
-
-    //this.connect(userId);
-
-    this.socket = new WebSocket(`${this.url1}?userId=${userId}`);
+    const token = 'valid';//this.generateToken();
+    console.log("token: ", token);
+    this.socket = new WebSocket(`${this.url}`);
     this.socket.onopen = (event) => {
       console.log('WebSocket connection established: ', event);
+      this.joinroomSocket = new WebSocket(`${this.joinroomUrl}`);
+
+      this.joinroomSocket.onopen = (event) => {
+        console.log('Joinroom socket connection established: ', event);
+      }
+
+      this.joinroomSocket.onerror = (error) => {
+        console.log('Joinroom socket error:', error);
+      };
     };
+
     this.socket.onmessage = (event) => {
       console.log("OnMessage resposne: ", event.data);
       const data: ResponseModel = JSON.parse(event.data);
+      console.log("data: ", data);
       this.toastr.success(data.message);
     };
     this.socket.onclose = (event) => {
@@ -37,28 +42,6 @@ export class WebSocketService {
     this.socket.onerror = (error) => {
       console.log('WebSocket error:', error);
     };
-  }
-
-  connect(userId: string) {
-    this.socket$ = new WebSocketSubject({
-      url: `${this.url1}?userId=${userId}`,
-      openObserver: {
-        next: () => {
-          console.log('WebSocket connection established');
-        }
-      },
-      closeObserver: {
-        next: () => {
-          console.log('WebSocket connection closed');
-        }
-      }
-    });
-
-    this.socket$.subscribe(
-      message => this.onMessage(message),
-      error => this.onError(error),
-      () => this.onComplete()
-    );
   }
 
   public sendMessage(message: any): void {
@@ -106,5 +89,13 @@ export class WebSocketService {
       default:
         return 'other';
     }
+  }
+
+  generateToken(): string {
+    return Math.random() < 0.5 ? 'valid' : 'invalid';
+  }
+
+  getRandomInt(): number {
+    return Math.floor(Math.random() * 1000);
   }
 }
